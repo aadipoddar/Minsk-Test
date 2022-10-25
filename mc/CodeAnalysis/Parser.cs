@@ -18,7 +18,7 @@
             {
                 token = lexer.NextToken();
 
-                if (token.Kind != SyntaxKind.WhiteSpaceToken &&
+                if (token.Kind != SyntaxKind.WhitespaceToken &&
                     token.Kind != SyntaxKind.BadToken)
                 {
                     tokens.Add(token);

@@ -63,7 +63,7 @@
 
                 var length = _position - start;
                 var text = _text.Substring(start, length);
-                return new SyntaxToken(SyntaxKind.WhiteSpaceToken, start, text, null);
+                return new SyntaxToken(SyntaxKind.WhitespaceToken, start, text, null);
             }
 
             if (Current == '+')

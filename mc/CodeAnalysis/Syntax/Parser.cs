@@ -1,4 +1,4 @@
-﻿namespace Minsk.CodeAnalysis
+﻿namespace Minsk.CodeAnalysis.Syntax
 {
     internal sealed class Parser
     {
@@ -79,7 +79,7 @@
                 var operand = ParseExpression(unaryOperatorPrecedence);
                 left = new UnaryExpressionSyntax(operatorToken, operand);
             }
-            
+
             else
             {
                 left = ParsePrimaryExpression();
@@ -99,7 +99,7 @@
 
             return left;
         }
-        
+
         private ExpressionSyntax ParsePrimaryExpression()
         {
             if (Current.Kind == SyntaxKind.OpenParenthesisToken)

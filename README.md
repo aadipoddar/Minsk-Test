@@ -1,5 +1,7 @@
 # Minsk
 
+[![Build Status](https://dev.azure.com/aadipoddar/Minsk/_apis/build/status/aadipoddar.Minsk?branchName=main)](https://dev.azure.com/aadipoddar/Minsk/_build/latest?definitionId=31&branchName=main)
+
 > Have you considered Minsk? -- Worf, naming things.
 
 This repo contains **Minsk**, a handwritten compiler in C#. It illustrates basic

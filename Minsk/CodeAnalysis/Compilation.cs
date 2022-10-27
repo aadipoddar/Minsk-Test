@@ -5,26 +5,25 @@ namespace Minsk.CodeAnalysis
 {
     public sealed class Compilation
     {
-        public Compilation(SyntaxTree syntax)
+        public Compilation(SyntaxTree syntaxTree)
         {
-            Syntax = syntax;
+            SyntaxTree = syntaxTree;
         }
 
-        public SyntaxTree Syntax { get; }
+        public SyntaxTree SyntaxTree { get; }
 
         public EvaluationResult Evaluate()
         {
             var binder = new Binder();
-            var boundExpression = binder.BindExpression(Syntax.Root);
+            var boundExpression = binder.BindExpression(SyntaxTree.Root);
 
-            var diagnostics = Syntax.Diagnostics.Concat(binder.Diagnostics).ToArray();
+            var diagnostics = SyntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
             if (diagnostics.Any())
                 return new EvaluationResult(diagnostics, null);
 
             var evaluator = new Evaluator(boundExpression);
             var value = evaluator.Evaluate();
-
-            return new EvaluationResult(Array.Empty<string>(), value);
+            return new EvaluationResult(Array.Empty<Diagnostic>(), value);
         }
     }
 }

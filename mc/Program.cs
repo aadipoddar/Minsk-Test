@@ -1,6 +1,5 @@
-﻿using Minsk.CodeAnalysis.Syntax;
-using Minsk.CodeAnalysis;
-using Minsk.CodeAnalysis.Binding;
+﻿using Minsk.CodeAnalysis;
+using Minsk.CodeAnalysis.Syntax;
 
 namespace Minsk
 {
@@ -21,7 +20,7 @@ namespace Minsk
                 if (line == "#showTree")
                 {
                     showTree = !showTree;
-                    Console.WriteLine(showTree ? "Showing parse trees" : "Not showing parse trees");
+                    Console.WriteLine(showTree ? "Showing parse trees." : "Not showing parse trees");
                     continue;
                 }
 
@@ -35,9 +34,6 @@ namespace Minsk
                 var compilation = new Compilation(syntaxTree);
                 var result = compilation.Evaluate();
 
-                var diagnostics = result.Diagnostics;
-
-
                 if (showTree)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -45,19 +41,38 @@ namespace Minsk
                     Console.ResetColor();
                 }
 
-                if (!diagnostics.Any())
+                if (!result.Diagnostics.Any())
                 {
                     Console.WriteLine(result.Value);
                 }
 
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    foreach (var diagnostic in result.Diagnostics)
+                    {
+                        Console.WriteLine();
 
-                    foreach (var diagnostic in diagnostics)
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine(diagnostic);
+                        Console.ResetColor();
 
-                    Console.ResetColor();
+                        var prefix = line.Substring(0, diagnostic.Span.Start);
+                        var error = line.Substring(diagnostic.Span.Start, diagnostic.Span.Length);
+                        var suffix = line.Substring(diagnostic.Span.End);
+
+                        Console.Write("    ");
+                        Console.Write(prefix);
+
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write(error);
+                        Console.ResetColor();
+
+                        Console.Write(suffix);
+
+                        Console.WriteLine();
+                    }
+
+                    Console.WriteLine();
                 }
             }
         }

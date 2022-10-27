@@ -43,7 +43,7 @@
             }
         }
 
-        internal static SyntaxKind GetKeywordKind(string text)
+        public static SyntaxKind GetKeywordKind(string text)
         {
             switch (text)
             {

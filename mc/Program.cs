@@ -51,7 +51,7 @@ namespace Minsk
                     var result = e.Evaluate();
                     Console.WriteLine(result);
                 }
-                
+
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -80,7 +80,7 @@ namespace Minsk
 
             Console.WriteLine();
 
-            indent += isLast ? "   " : "│   ";
+            indent += isLast ? "   " : "│  ";
 
             var lastChild = node.GetChildren().LastOrDefault();
 

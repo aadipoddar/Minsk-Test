@@ -1,6 +1,6 @@
-namespace Minsk.Tests
+namespace Minsk.Tests.CodeAnalysis.Syntax
 {
-    public class UnitTest1
+    public class LexerTest
     {
         [Fact]
         public void Test1()

@@ -1,10 +1,8 @@
-﻿using Minsk.CodeAnalysis.Syntax;
-
-namespace Minsk.CodeAnalysis.Binding
+﻿namespace Minsk.CodeAnalysis.Syntax
 {
     public sealed class AssignmentExpressionSyntax : ExpressionSyntax
     {
-        public AssignmentExpressionSyntax(SyntaxToken identifierToken,SyntaxToken equalsToken , ExpressionSyntax expression)
+        public AssignmentExpressionSyntax(SyntaxToken identifierToken, SyntaxToken equalsToken, ExpressionSyntax expression)
         {
             IdentifierToken = identifierToken;
             EqualsToken = equalsToken;
@@ -15,12 +13,5 @@ namespace Minsk.CodeAnalysis.Binding
         public SyntaxToken IdentifierToken { get; }
         public SyntaxToken EqualsToken { get; }
         public ExpressionSyntax Expression { get; }
-
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return IdentifierToken;
-            yield return EqualsToken;
-            yield return Expression;
-        }
     }
 }

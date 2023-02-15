@@ -13,12 +13,5 @@
         public SyntaxToken OpenParenthesisToken { get; }
         public ExpressionSyntax Expression { get; }
         public SyntaxToken CloseParenthesisToken { get; }
-
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return OpenParenthesisToken;
-            yield return Expression;
-            yield return CloseParenthesisToken;
-        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Minsk.CodeAnalysis.Syntax;
-
-namespace Minsk.CodeAnalysis.Binding
+﻿namespace Minsk.CodeAnalysis.Syntax
 {
     public sealed class NameExpressionSyntax : ExpressionSyntax
     {
@@ -11,10 +9,5 @@ namespace Minsk.CodeAnalysis.Binding
 
         public override SyntaxKind Kind => SyntaxKind.NameExpression;
         public SyntaxToken IdentifierToken { get; }
-
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return IdentifierToken;
-        }
     }
 }

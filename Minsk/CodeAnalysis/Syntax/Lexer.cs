@@ -74,7 +74,6 @@ namespace Minsk.CodeAnalysis.Syntax
                     {
                         _kind = SyntaxKind.AmpersandAmpersandToken;
                         _position += 2;
-                        break;
                     }
                     break;
                 case '|':
@@ -82,7 +81,6 @@ namespace Minsk.CodeAnalysis.Syntax
                     {
                         _kind = SyntaxKind.PipePipeToken;
                         _position += 2;
-                        break;
                     }
                     break;
                 case '=':
@@ -93,8 +91,8 @@ namespace Minsk.CodeAnalysis.Syntax
                     }
                     else
                     {
-                        _position++;
                         _kind = SyntaxKind.EqualsEqualsToken;
+                        _position++;
                     }
                     break;
                 case '!':
@@ -119,7 +117,7 @@ namespace Minsk.CodeAnalysis.Syntax
                 case '7':
                 case '8':
                 case '9':
-                    ReadNumberToken();
+                    ReadNumber();
                     break;
                 case ' ':
                 case '\t':
@@ -160,7 +158,7 @@ namespace Minsk.CodeAnalysis.Syntax
             _kind = SyntaxKind.WhitespaceToken;
         }
 
-        private void ReadNumberToken()
+        private void ReadNumber()
         {
             while (char.IsDigit(Current))
                 _position++;

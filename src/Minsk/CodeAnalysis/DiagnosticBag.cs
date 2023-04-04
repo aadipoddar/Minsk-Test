@@ -1,4 +1,5 @@
 using System.Collections;
+
 using Minsk.CodeAnalysis.Syntax;
 using Minsk.CodeAnalysis.Text;
 
@@ -57,6 +58,12 @@ namespace Minsk.CodeAnalysis
         public void ReportUndefinedName(TextSpan span, string name)
         {
             var message = $"Variable '{name}' doesn't exist.";
+            Report(span, message);
+        }
+
+        public void ReportCannotConvert(TextSpan span, Type fromType, Type toType)
+        {
+            var message = $"Cannot convert Type'{fromType}' to '{toType}'.";
             Report(span, message);
         }
     }

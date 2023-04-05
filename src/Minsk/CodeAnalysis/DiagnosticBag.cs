@@ -66,5 +66,17 @@ namespace Minsk.CodeAnalysis
             var message = $"Cannot convert Type'{fromType}' to '{toType}'.";
             Report(span, message);
         }
+
+        public void ReportVariableAlreadyDeclared(TextSpan span, string name)
+        {
+            var message = $"Variable '{name}' is already declared.";
+            Report(span, message);
+        }
+
+        public void ReportCannotAssign(TextSpan span, string name)
+        {
+            var message = $"Variable '{name}' is read-only and cannot be assigned to.";
+            Report(span, message);
+        }
     }
 }
